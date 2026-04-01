@@ -88,7 +88,7 @@ kubectl get pods -n ingress-nginx
 ### Application Access
 ```
 kubectl get svc
-'''
+```
 ![Application_Access](images/getsvc.png)
 
 ## Application Running
