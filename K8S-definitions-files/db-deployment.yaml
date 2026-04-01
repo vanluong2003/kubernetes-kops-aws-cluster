@@ -21,7 +21,7 @@ spec:
           command: ["sh", "-c", "rm -rf /var/lib/mysql/lost+found"]
       containers:
         - name: vprodb-container
-          image: vanluong2003/vprodb
+          image: vanluong2003/vprodb:v1
           ports:
             - name: vprodb-port
               containerPort: 3306

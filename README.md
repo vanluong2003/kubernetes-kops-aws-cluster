@@ -1,23 +1,18 @@
-### Install Kops VM in Linux
-curl -Lo kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
-chmod +x kops
-sudo mv kops /usr/local/bin/kops
+# Kubernetes Cluster Deployment on AWS using Kops
+End-to-end automated Kubernetes cluster deployment on AWS using Kops, designed with production-ready best practices, scalability, and DevOps automation in mind.
 
-### Install kubectl in Ubuntu
-sudo snap install kubectl --classic
-kubectl version --client
+## Overview 
+This project demonstrates how to provision, configure, and manage a highly available Kubernetes cluster on AWS using Kops. It focuses on real-world DevOps practices such as infrastructure automation, state management, and cluster lifecycle operations.
 
-### Install AWS CLI
-sudo snap install aws-cli --classic
-aws --version
+👉 Ideal for:
 
-### Configure IAM and access permissions
-aws configure
+- DevOps Engineers preparing for real-world environments
+- Candidates showcasing hands-on Kubernetes + AWS experience
+- Recruiters evaluating practical infrastructure skills
 
-### Create S3 Bucket, Route53 Hosted Zone and Add NS Records for Godaddy domain 
+## Tech Stack
+* **Cloud Provider**: AWS (EC2, S3, Route53, IAM)
+* **Orchestration**: Kubernetes
+* **Provisioning Tool**: Kops
+* **CLI Tools**: kubectl, aws-cli
 
-### Create Cluster
-
-kops create cluster --name=vprofile.vanluong203.online --state=s3://vprofilebucket203 --zones=us-east-1a,us-east-1b --node-count=2 --node-size=t3.small --control-plane-size=t3.medium --dns-zone=vprofile.vanluong203.online --node-volume-size=12 --control-plane-volume-size=12 --ssh-public-key ~/.ssh/id_ed25519.pub
-
-kops update cluster --name=vprofile.vanluong203.online --state=s3://vprofilebucket203 --yes --admin

@@ -20,7 +20,7 @@ spec:
             [
               "sh",
               "-c",
-              "until nslookup vpromq01; do echo 'Waiting for RabbitMQ...'; sleep 2; done",
+              "until nslookup vpromq01.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo 'Waiting for RabbitMQ...'; sleep 2; done",
             ]
         - name: init-mc
           image: busybox
@@ -28,7 +28,7 @@ spec:
             [
               "sh",
               "-c",
-              "until nslookup vprocache01; do echo 'Waiting for Memcached...'; sleep 2; done",
+              "until nslookup vprocache01.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo 'Waiting for Memcached...'; sleep 2; done",
             ]
         - name: init-db
           image: busybox
@@ -36,11 +36,11 @@ spec:
             [
               "sh",
               "-c",
-              "until nslookup vprodb; do echo 'Waiting for Database...'; sleep 2; done",
+              "until nslookup vprodb.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo 'Waiting for Database...'; sleep 2; done",
             ]
       containers:
         - name: vproapp-container
-          image: vanluong2003/vproapp
+          image: vanluong2003/vproapp:v1
           ports:
             - name: vproapp-port
               containerPort: 8080

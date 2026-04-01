@@ -7,7 +7,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: vanluong203.online
+    - host: k8sapp.vanluong203.online
       http:
         paths:
           - path: /
