@@ -15,22 +15,8 @@ This project demonstrates how to provision, configure, and manage a highly avail
 * S3 bucket for cluster state storage
 * Route53 for DNS management
 
-```
-                +----------------------+
-                |     Route53 DNS      |
-                +----------+-----------+
-                           |
-                  +--------v--------+
-                  |   K8s API Server |
-                  +--------+--------+
-                           |
-        +------------------+------------------+
-        |                                     |
-+-------v-------+                     +--------v-------+
-|  Worker Node  |                     |  Worker Node   |
-|   (Pod Apps)  |                     |   (Pod Apps)   |
-+---------------+                     +----------------+
-```
+![Overview](images/overview.png)
+
 ![Architecture](images/architecture.png)
 ## Prerequisites (for Ubuntu)
 ### Install Kops
